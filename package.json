@@ -1,14 +1,31 @@
 {
-  "name": "js",
+  "name": "recsaver",
   "version": "1.0.0",
   "description": "",
-  "main": "html_views.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trepear/RecSaver.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trepear/RecSaver/issues"
+  },
+  "homepage": "https://github.com/trepear/RecSaver#readme",
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.19.2",
+    "env": "0.0.2",
+    "epxress": "0.0.1-security",
+    "fs": "0.0.1-security",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "path": "^0.12.7",
+    "sequelize": "^6.3.3",
+    "util": "^0.12.3"
   }
 }

@@ -1,4 +1,4 @@
 -- Drops the database if it exists currently --
--- DROP DATABASE IF EXISTS nameofDatabase;
+DROP DATABASE IF EXISTS movie_db;
 -- Creates the  database --
--- CREATE DATABASE nameofDatabase;
+CREATE DATABASE movie_db;
