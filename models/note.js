@@ -1,7 +1,14 @@
 module.exports = function(sequelize, DataTypes) {
 var Note = sequelize.define("Note", {
+    title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1]
+        }
+      },
     body: {
-        type: Datatypes.STRING
+        type: DataTypes.STRING
     }
 })
 Note.associate = function(models) {
@@ -13,13 +20,3 @@ Note.associate = function(models) {
 }
 return Note;
 }
-
-// Author.associate = function(models) {
-//     // Associating Author with Posts
-//     // When an Author is deleted, also delete any associated Posts
-//     Author.hasMany(models.Post, {
-//       onDelete: "cascade"
-//     });
-//   };
-
-//   return Author;

@@ -9,14 +9,37 @@ const router = require('express').Router()
 var db = require("../models");
 
 // WORKS
-// GET route for retrieving a single list-item (by :id)
+// GET route for retrieving a single list-item (by :title)
 router.route('/api/movie/:title')
     .get(movieController.findMovie);
 
 // WORKS
+// GET route for retrieving an :id from IMDB
+router.route('/api/notes/:imdbID')
+    .get(movieController.getMovieId);
+
+// WORKS
+// GET route for connecting a searched movie to its specific movieId
+router.get("/api/notes/:imdbID", function(req, res) {
+    db.movieList.findAll({
+        where: {
+            imdbID: req.params.imdbID,
+            title: req.params.title   
+        }})
+    .then(function(dbmovieList) {
+        res.json(dbmovieList);
+    })
+    .catch(function(err) {
+        res.json(err)
+    })
+}) 
+
+// WORKS
 // GET route for retriving all notes that are connected to movies
 router.get("/api/movie", function(req, res) {
-    db.movieList.findAll()
+    db.Note.findAll({
+        include: [db.movieList]
+    })
     .then(function(dbmovieList){
         res.json(dbmovieList)
     })
@@ -24,92 +47,65 @@ router.get("/api/movie", function(req, res) {
         res.json(err)
     })
 })
-// ****** WORK IN PROGRESS ******
-// GET route for retrieving a single note connected to a specific movie
-//   router.get("api/movie/:movieId", function(req, res){
-//     db.movieList.findOne({
-//         where: {
-//             movieId: req.params.movieId
-//         }
-//     })
-//     .then(function(dbmovieList){
-//         res.json(dbmovieList)
-    
-//     }) 
-// });
 
 // WORKS
-// POST route for saving a new note attached to movieList-item
-router.post("/api/movie", function(req, res) {
-    console.log(req.body);
+// POST route for saving a movie to the database
+router.post("/api/movie/", function(req,res) {
     db.movieList.create({
-      title: req.body.title,
-      body: req.body.body,
-      watched: req.body.watched
+        imdbID: req.body.imdbID,
+        title: req.body.title,
     })
     .then(function(dbmovieList) {
         res.json(dbmovieList);
-    });
+    })
+    .catch(function(err) {
+        res.json(err)
+    })
+})
+
+// POST route for saving a new note attached to movieList-item
+router.post("/api/notes/", function(req, res) {
+    console.log(req.body);
+    db.Note.create({
+      title: req.body.title,
+      body: req.body.body,
+      movieListId: req.body.movieListId
+    })
+    .then(function(dbNote) {
+        res.json(dbNote);
+    })
+    .catch(function(err) {
+        res.json(err)
+    })
 });
 
-// DELETE route for deleting list-items
-// router.route('/api/movie/:title', function(req, res) {
-//     db.movieList.destroy({
-//         where: {
-//             title: req.params.title
-//         }
-//         .then(function(dbmovieList) {
-//             res.json(dbmovieList);
-//         })
-// });
-// })
-
-// router.delete('/api/movie')
-//     .destroy(movieController.findMovie);
-
-// router.delete("/api/movie/:title", function(req,res) {
-//     db.movieList.destroy({
-//         where: {
-//             title: req.params.title
-//         }
-//         .then(function(dbmovieList){
-//             res.json(dbmovieList);
-//         })
-//     //     .then(results => res.json(results))
-//     // });
-// });
-
-// WORKS 
-// DELETE route for deleting notes from list-items 
-router.delete('/api/movie/:title', function(req, res) {
-    db.movieList.destroy({
-        where: {
-            title: req.params.title
-    }})
-        .then(function(dbmovieList) {
-            res.json(dbmovieList);
-        }) .catch(function(err) {
-            res.json(err)
-        })
-    });
+// DELETE route for deleting a specific note associated with a movie (this deletes entire list-item)
+router.delete("/api/notes/:movieListId", function(req, res) {
+    db.Note.destroy({
+      where: {
+        movieListId: req.params.movieListId
+      }
+    }).then(function(dbNote) {
+      res.json(dbNote);
+    }) .catch(function(err) {
+        res.json(err)
+    }) 
+  });
 
 
 // PUT route for updating notes 
-router.put("/api/movie", function(req,res) {
-    db.movieList.update({
-        title: req.body.title,
+router.put("/api/movie/:id", function(req,res) {
+    db.Note.update({
         body: req.body.body,
-        watched: req.body.watched
     }, {
         where: {
-            id: req.body.id
+            id: req.params.id
         }
-    }).then(function(dbmovieList){
-        res.json(dbmovieList);
+    }).then(function(dbNote){
+        res.json(dbNote);
     });
 });
-// movie list table with title, boolean value about whether its watched, and a notes field to add comments 
-// on to many relationship with user and movies (add user ID_)
+
 
 module.exports = router;
 

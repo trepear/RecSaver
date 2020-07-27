@@ -5,9 +5,16 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
-    movieId: {
-      type: DataTypes.INTEGER
-    }
+    imdbID: {
+      type: DataTypes.STRING
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
   })
   movieList.associate = function(models) {
     movieList.hasMany(models.Note, {
