@@ -1,13 +1,35 @@
-<!-- PAGE WHERE USER WILL SEE SAVED LISTS -->
-
+<!-- PAGE WHERE USER CAN VIEW ITEMS IN THE WATCH LIST -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RecSaver</title>
+    <title>Watch List</title>
+    <!-- Latest compiled and minified CSS & JS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/style.css" media="screen" title="no title">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="watchList-container">
+                    <h1>Watch List</h1>
+                </div>
+            </div>
+        </div>
+        <div id="saved-titles">
+            <h1 id="movie-text">Movies</h1>
+        <!-- DYNAMIC STUFF-->
+        </div>
+    </div>
+
+ <!-- Custom Script -->
+ <script src="js/list.js" type="text/javascript"></script>
+
 </body>
+
 </html>

@@ -7,7 +7,7 @@
     <title>RecSaver</title>
     <!-- Latest compiled and minified CSS & JS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="css/styles.css" media="screen" title="no title"> -->
+    <link rel="stylesheet" href="/public/css/style.css" media="screen" title="no title">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
@@ -22,32 +22,55 @@
                         <tbody>
                             <tr id="form-row">
                                 <form id="movie-form">
-                                    <td colspan="4">
-                                        <br>
-                                        
-                                    </td>
+                                    <td colspan="4"><br></td>
                                     <!-- <td><a class="btn btn-primary btn-lg mt-4" id="search-btn" href="search.html"
                                             role="button">Search</a></td> -->
-                                    </td>
-                                    </td>
-                                    <td><a class="btn btn-primary btn-lg mt-4" id="save-btn" href="search.html" role="button">Save
-                                            Title</a></td>
-                                    </td>
-                                    </td>
-                                    <td><a class="btn btn-primary btn-lg mt-4" href="list.html" role="button">View
-                                            List</a></td>
-                                    </td>
+                                            
+                                    <input placeholder="Enter a title" id="title-search" type="text" /> 
+                                    <a class="btn btn-primary btn-lg mt-4" href="list.html" id="add-btn" role="button">Add to Watchlist</a>
+                                    <a href = 'search.html'>
+                                        <button  class="btn btn-primary btn-lg mt-4" 
+                                            id="search-btn" 
+                                            href="search.html"
+                                            role="button"
+                                            type='submit'>Search
+                                        </button>
+                                    </a>
                                 </form>
-                                <a class="btn btn-primary btn-lg mt-4" id="search-btn" href="search.html"
-                                            role="button">Search</a></td>
-                                <input placeholder="Enter a title" id="title-search" type="text" />
                             </tr>
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+        <div id="content-goes-here">
+            <p>
+                Title: <span id="content-title"></span>
+                
+            </p>
+            <p>
+                <img src="" alt="Movie Poster"/>
+            </p>
+            <p>
+                Release Year: <span id="content-year"></span>
+            </p>
+            <p>
+                Rating: <span id="content-rating"></span>
+            </p>
+            <p>
+                Plot: <span id="content-plot"></span>
+            </p>
+            <p>
+                Runtime: <span id="content-runtime"></span>
+            </p>
+            <p>
+                imdb Rating: <span id="content-runtime"></span>
+            </p>
+            
+        </div>
 
-                        <!-- Custom Script -->
-                        <script src="js/search.js" type="text/javascript"></script>
+ <!-- Custom Script -->
+ <script src="js/search.js" type="text/javascript"></script>
 
 </body>
 

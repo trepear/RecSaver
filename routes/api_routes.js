@@ -10,12 +10,12 @@ var db = require("../models");
 
 // WORKS
 // GET route for retrieving a single list-item (by :title)
-router.route('/api/movie/:title')
+router.route('/3p/movie/title/:title')
     .get(movieController.findMovie);
 
 // WORKS
 // GET route for retrieving an :id from IMDB
-router.route('/api/notes/:imdbID')
+router.route('/3p/movie/imdbID/:imdbID')
     .get(movieController.getMovieId);
 
 // WORKS
@@ -23,8 +23,7 @@ router.route('/api/notes/:imdbID')
 router.get("/api/notes/:imdbID", function(req, res) {
     db.movieList.findAll({
         where: {
-            imdbID: req.params.imdbID,
-            title: req.params.title   
+            imdbID: req.params.imdbID,  
         }})
     .then(function(dbmovieList) {
         res.json(dbmovieList);
@@ -35,8 +34,20 @@ router.get("/api/notes/:imdbID", function(req, res) {
 }) 
 
 // WORKS
-// GET route for retriving all notes that are connected to movies
+// GET route for retriving the entire movieList
 router.get("/api/movie", function(req, res) {
+    db.movieList.findAll({
+    })
+    .then(function(dbmovieList){
+        res.json(dbmovieList)
+    })
+    .catch(function(err) {
+        res.json(err)
+    })
+})
+
+// GET route for retriving all notes that are connected to movies
+router.get("/api/notes", function(req, res) {
     db.Note.findAll({
         include: [db.movieList]
     })
@@ -51,6 +62,7 @@ router.get("/api/movie", function(req, res) {
 // WORKS
 // POST route for saving a movie to the database
 router.post("/api/movie/", function(req,res) {
+    console.log(req.body)
     db.movieList.create({
         imdbID: req.body.imdbID,
         title: req.body.title,
@@ -65,7 +77,7 @@ router.post("/api/movie/", function(req,res) {
 
 // POST route for saving a new note attached to movieList-item
 router.post("/api/notes/", function(req, res) {
-    console.log(req.body);
+    console.log("REQ.BODY", req.body);
     db.Note.create({
       title: req.body.title,
       body: req.body.body,

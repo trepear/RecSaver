@@ -1,117 +1,78 @@
 $(document).ready(function () {
+    $("#search-btn").on("click", getTitle);
 
-    // Creating references 
-
-    // var movieList = $("tbody");
-    // var movieContainer = $(".movie-container");
-    var title = $("#title-search").val();
-    // $(document).on("submit", "#movie-form", movieFormSubmit);
-    $("#search-btn").on("click", getTitle());
-
-
-
-
-    // GET REQUEST
-    // When user searches for a movie, imdb will need to populate the page with the:
-    // 1) Summary
-    // 2) Poster img.
-    // 3) Rating
-    // 4) Release yr.
-
-
-    // function getTitle() {
-    //     var title = $("#title-search").val();
-    //     var settings = {
-    //         "url": `localhost:8080/api/movie/${title}`,
-    //         "method": "GET",
-    //         "timeout": 0,
-    //         "headers": {
-    //           "Access-Control-Allow-Origin": ""
-    //         },
-    //       };
-
-    //       $.ajax(settings).done(function (Resultresult) {
-    //         console.log(Response);
-    //       });
-    // }
-    function getTitle() {
-        // var title = document.getElementById("title-search").value;
-        // var title = $("#title-search").val();
-        //var titleSearch = $("#title-search").val();
+    function getTitle(event) {
+        event.preventDefault();
+        var title = $("#title-search").val();
         var requestOptions = {
             method: 'GET',
             redirect: 'follow'
         };
-
-        fetch("http://localhost:8080/api/movie/pinocchio", requestOptions)
-            // .then(result=> result.text())
+        console.log(title);
+        fetch(`http://localhost:8080/3p/movie/title/${title}`, requestOptions)
             .then(result => result.json())
-            .then(function (data) {
-                let movies = data.result;
-                return movies.map(function (movie) {
-                    let div = createNode('div'),
-                    p = createNode('p');
-                    p.innerHTML = `${movie.Rated}`;
-                    append(div, p);
-                })
-            })
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
+            .then(function (movie) {
+                console.log(movie);
+                let html =
+`
+<div id="content-goes-here">
+            <p>
+                Title: <span id="content-title">${movie.Title}</span>
+            </p>
+            <p>
+                <img src="${movie.Poster}" alt="Movie Poster"/>    
+            </p>
+            <p>
+                Release Year: <span id="content-year">${movie.Year}</span>
+            </p>
+            <p>
+                Rating: <span id="content-rating">${movie.Rated}</span>
+            </p>
+            <p>
+                Plot: <span id="content-plot">${movie.Plot}</span>
+            </p>
+            <p>
+                Runtime: <span id="content-runtime">${movie.Runtime}</span>
+            </p>
+            <p>
+                imdb Rating: <span id="content-runtime">${movie.imdbRating}</span>
+            </p>
+            
+</div>
+`
+$('#content-goes-here').html(html)
 
-        function createNode(element) {
-            return document.createElement(element)
-        }
+// This function needs to:
+    // 1) save movie to database by grabbing:
+            // imdbID && title
+            $("#add-btn").on("click", addTitle);
+            function addTitle(event) {
+                event.preventDefault();
+                var myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+                
+                var urlencoded = new URLSearchParams();
+                urlencoded.append("imdbID", `${movie.imdbID}`);
+                urlencoded.append("title", `${movie.Title}`);
+                
+                var requestOptions = {
+                  method: 'POST',
+                  headers: myHeaders,
+                  body: urlencoded,
+                  redirect: 'follow'
+                };
+                
+                fetch("http://localhost:8080/api/movie/", requestOptions)
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+            
+            }
 
-        function append(parent, el) {    
-            return parent.appendChild(el);
-        }
+    })
+        .catch(error => console.log('error', error));
+}
 
-        // // Creating a div to hold the moviee
-        // var movieDiv = $("<div class='movie'>");
 
-        // // Storing the rating data
-        // var rating = result.Rated;
-        // console.log("RATING DATA: " + result.Rated);
-
-        // // Creating an element to have the rating displayed
-        // var pOne = $("<p>").text("Rating: " + rating);
-
-        // // Displaying the rating
-        // movieDiv.append(pOne);
-
-        // // Storing the release year
-        // var released = result.Year;
-
-        // // Creating an element to hold the release year
-        // var pTwo = $("<p>").text("Released: " + released);
-
-        // // Displaying the release year
-        // movieDiv.append(pTwo);
-
-        // // Storing the plot
-        // var plot = result.Plot;
-
-        // // Creating an element to hold the plot
-        // var pThree = $("<p>").text("Plot: " + plot);
-
-        // // Appending the plot
-        // movieDiv.append(pThree);
-
-        // // Retrieving the URL for the image
-        // var imgURL = result.Poster;
-
-        // // Creating an element to hold the image
-        // var image = $("<img>").attr("src", imgURL);
-
-        // // Appending the image
-        // movieDiv.append(image);
-
-        // // Putting the entire movie above the previous movies
-        // $("#movies-view").prepend(movieDiv);
-
-    }
 })
-// When user clicks "add" after reviewing the movie info, the movie will be appended to their "movie-list"
-        // addEventListener(onClick)? 
 
-// console.log("GET TITLE FUNCtION: " + getTitle);}
+
