@@ -4,7 +4,6 @@ module.exports = {
     // this gets us a movie and show a bunch of different info about it
     findMovie: function (req, res) {
         let title = req.params.title;
-        // console.log(title);
         axios({
             "method": "GET",
             "url": "https://movie-database-imdb-alternative.p.rapidapi.com/",
@@ -56,7 +55,3 @@ module.exports = {
 
     }
 }
-
-// save movie id to database
-// call to third part api again using the movie id that we have
-// return

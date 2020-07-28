@@ -1,19 +1,55 @@
 <!-- PAGE WHERE USER CAN SEARCH FOR NEW LIST ITEMS -->
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>RecSaver</title>
+    <!-- Latest compiled and minified CSS & JS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="css/styles.css" media="screen" title="no title"> -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-    <div class="topnav">
-        <a class="active" href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      <input id="movie-search" type="text" placeholder="Search..">
-    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="movie-container">
+                    <h1>Search for Movies and TV shows</h1>
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr id="form-row">
+                                <form id="movie-form">
+                                    <td colspan="4">
+                                        <br>
+                                        
+                                    </td>
+                                    <!-- <td><a class="btn btn-primary btn-lg mt-4" id="search-btn" href="search.html"
+                                            role="button">Search</a></td> -->
+                                    </td>
+                                    </td>
+                                    <td><a class="btn btn-primary btn-lg mt-4" id="save-btn" href="search.html" role="button">Save
+                                            Title</a></td>
+                                    </td>
+                                    </td>
+                                    <td><a class="btn btn-primary btn-lg mt-4" href="list.html" role="button">View
+                                            List</a></td>
+                                    </td>
+                                </form>
+                                <a class="btn btn-primary btn-lg mt-4" id="search-btn" href="search.html"
+                                            role="button">Search</a></td>
+                                <input placeholder="Enter a title" id="title-search" type="text" />
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="searched-title"></div>
+
+                        <!-- Custom Script -->
+                        <script src="js/search.js" type="text/javascript"></script>
+
 </body>
-<script src="js/third_party_view.js"></script>
+
 </html>
