@@ -91,7 +91,7 @@ router.post("/api/notes/", function(req, res) {
     })
 });
 
-// DELETE route for deleting a specific note associated with a movie (this deletes entire list-item)
+// DELETE route for deleting a specific note associated with a movie 
 router.delete("/api/notes/:movieListId", function(req, res) {
     db.Note.destroy({
       where: {
@@ -106,7 +106,7 @@ router.delete("/api/notes/:movieListId", function(req, res) {
 
 
 // PUT route for updating notes 
-router.put("/api/movie/:id", function(req,res) {
+router.put("/api/notes/:id", function(req,res) {
     db.Note.update({
         body: req.body.body,
     }, {
