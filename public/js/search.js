@@ -9,7 +9,7 @@ $(document).ready(function () {
             redirect: 'follow'
         };
         console.log(title);
-        fetch(`http://localhost:8080/3p/movie/title/${title}`, requestOptions)
+        fetch(`/3p/movie/title/${title}`, requestOptions)
             .then(result => result.json())
             .then(function (movie) {
                 console.log(movie);
@@ -62,7 +62,7 @@ $('#content-goes-here').html(html)
                   redirect: 'follow'
                 };
                 
-                fetch("http://localhost:8080/api/movie/", requestOptions)
+                fetch("/api/movie/", requestOptions)
                 .then(result => console.log(result))
                 .catch(error => console.log('error', error));
             
