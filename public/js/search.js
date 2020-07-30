@@ -26,13 +26,13 @@ $(document).ready(function () {
           <div class="card-body">
             <h5 class="card-title">${movie.Title}</h5>
             <p>
-                <span id="content-plot">${movie.Plot}</span>
+                <span id="content-plot">Plot: ${movie.Plot}</span>
             </p>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><span id="content-year">${movie.Year}</span></li>
-                <li class="list-group-item"><span id="content-rating">${movie.Rated}</span></li>
-                <li class="list-group-item"><span id="content-runtime">${movie.Runtime}</span></li>
-                <li class="list-group-item"><span id="content-runtime">${movie.imdbRating}</span></li>
+                <Year: li class="list-group-item"><span id="content-year">Release Year: ${movie.Year}</span></li>
+                <Rating: li class="list-group-item"><span id="content-rating">Rating: ${movie.Rated}</span></li>
+                <Runtime: li class="list-group-item"><span id="content-runtime">Runtime: ${movie.Runtime}</span></li>
+                <imdbRating: li class="list-group-item"><span id="content-runtime">imdb User Rating: ${movie.imdbRating}</span></li>
             </ul>
           </div>
         </div>

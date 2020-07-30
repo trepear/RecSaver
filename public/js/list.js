@@ -21,7 +21,7 @@ const getMovies = () => {
                 // var completeBtn = $("<button>").attr("class","complete").text("Mark as watched");
                 // $(movieTitleDiv).append(completeBtn)
 
-                if (body === null || ""){
+                if (body ===  ""){
                     var titleText = $("<h2>").text(title);
                     $(movieTitleDiv).append(titleText);
                     $("#saved-titles").append(movieTitleDiv);
@@ -55,7 +55,7 @@ const getMovies = () => {
                 
             })
             // PUT ROUTE
-            let data = {"body":`${body}`}
+            // let data = {"body":`${body}`}
             console.log("BODY " ,bodyText);
             $('#saved-titles').on('click', '.update', function() {
                 $.ajax({ cache: false,

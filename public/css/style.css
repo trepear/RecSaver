@@ -97,3 +97,11 @@ html {
 #content-goes-here, p {
     color: black;
 }
+
+h2 {
+    color: black;
+}
+
+#home-text, #home-footer{
+    color: white;
+}
