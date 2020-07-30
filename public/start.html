@@ -6,12 +6,60 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <meta name="description" content="">
+ <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/"> -->
   <title>RecSaver</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/flatly/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
-</head>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.1.3/flatly/bootstrap.min.css" /> -->
+  <!-- <link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+  <!-- <script src="css/style.css"></script> -->
 
-<body>
+ <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+  </style>
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="masthead mb-auto">
+    <div class="inner">
+      <!-- <h3 class="masthead-brand">Cover</h3> -->
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link active" href="#">Home</a>
+        <a class="nav-link" href="search.html">Movie Search</a>
+        <a class="nav-link" href="list.html">Watch List</a>
+      </nav>
+    </div>
+  </header>
+
+  <main role="main" class="inner cover">
+    <h1 class="cover-heading">RecSaver.</h1>
+    <p class="lead">A place to search, save and comment on movie and TV show recommendations</p>
+    <p class="lead">
+      <a href="search.html" class="btn btn-lg btn-secondary" role = "button"animate__animated animate__bounce>Get Started</a>
+    </p>
+  </main>
+
+  <footer class="mastfoot mt-auto">
+    <div class="inner">
+      <p>Copyright Trier Buhrsmith & Salma Mohamed 2020 &copy;</p>
+    </div>
+  </footer>
+
+<!-- <body>
   <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="/">RecSaver
     </a>
@@ -22,8 +70,20 @@
       <h4 class="mt-4">A place to search, save and comment on movie and TV show recommendations</h4>
       <a class="btn btn-primary btn-lg mt-4" href="search.html" role="button">Get Started</a>
     </div>
+     3D Animation
+     <center>
+      <div id="box" style="position: relative;">    
+        <canvas id="myCanvas" height="500" width="500"
+              style="position: absolute; left:0; top:0; z-index:1;"></canvas>
+        <canvas id="myCanvas2" height="500" width="500"
+              style="position: absolute; left:0; top:0; z-index:0;"></canvas>
+      </div>
+      <div id="monitor"></div>
+    </center>
   </div>
-  <h1 class="animate__animated animate__bounce">An animated element</h1>
+  <h1 class="animate__animated animate__bounce">An animated element</h1> -->
+
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="/RecSaver/public/js/start.js"></script>
 </body>
