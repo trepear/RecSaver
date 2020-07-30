@@ -15,12 +15,17 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
+    body: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
   })
-  movieList.associate = function(models) {
-    movieList.hasMany(models.Note, {
-      oneDelete: "cascade"
-    });
-}
+  // movieList.associate = function(models) {
+  //   movieList.hasMany(models.Note, {
+  //     oneDelete: "cascade"
+    // });
   return movieList;
-};
+}
+  
+// };
 
