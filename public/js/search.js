@@ -63,7 +63,9 @@ $('#content-goes-here').html(html)
                 };
                 
                 fetch("/api/movie/", requestOptions)
-                .then(result => console.log(result))
+                .then(result =>
+                console.log(result),
+                window.location.href="/list")
                 .catch(error => console.log('error', error));
             
             }
